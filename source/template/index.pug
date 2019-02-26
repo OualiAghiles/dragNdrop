@@ -1,1 +1,206 @@
-extends _layouts/_wrapper
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Cheatsheet Concept
+    link(rel='icon', type='image/png', sizes='32x32', href='../images/favicon.png')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css')
+    link(rel='stylesheet', href='https://unpkg.com/bulma@0.7.4/css/bulma.min.css')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.5.0/css/all.css', integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU', crossorigin='anonymous')
+    link(rel='stylesheet', href='assets/styles/main.min.css')
+  body
+    section.hero.is-primary
+      .hero-body
+        .columns
+          .column.is-12
+            .container.content
+              i.is-large.fab.fa-discord
+              i.is-large.fas.fa-code
+              h1.title
+                | Code 
+                em All
+                |  The Things
+              h3.subtitle
+                | Collection of code goodies for next-level dev
+              a.button.is-primary.is-large(href='https://github.com/dansup/bulma-templates', target='_blank')
+                span.icon
+                  i.fab.fa-github
+                span Github
+    section.section
+      .container
+        .columns
+          .column.is-3
+            aside.is-medium.menu
+              p.menu-label
+                | categories
+              ul.menu-list
+                li.is-right
+                  a.is-active(href='#const')
+                    i.fab.fa-css3-alt
+                    |  CSS
+                li
+                  a.is-active(href='#let')
+                    i.fab.fa-js
+                    |  JS
+                li
+                  a.is-active(href='#let')
+                    i.fab.fa-html5
+                    |  HTML
+              p.menu-label
+                | More to read...
+              ul.menu-list
+                li
+                  span.tag.is-white.is-medium Lorem
+                li
+                  span.tag.is-white.is-medium Ipsum
+                li
+                  span.tag.is-white.is-medium Dolor
+                li
+                  span.tag.is-white.is-medium Animi
+                li
+                  span.tag.is-white.is-medium Eximi
+                li
+                  span.tag.is-white.is-medium Nullius
+                li
+                  span.tag.is-white.is-medium Oxipi
+                li
+                  span.tag.is-white.is-medium Vultus
+                li
+                  span.tag.is-white.is-medium Voluptatis
+                li
+                  span.tag.is-white.is-medium Exomarphis
+                li
+                  span.tag.is-white.is-medium Finimi
+                li
+                  span.tag.is-white.is-medium Aenigma
+                li
+                  span.tag.is-white.is-medium Arkham
+                li
+                  span.tag.is-white.is-medium Blue
+                li
+                  span.tag.is-white.is-medium Medium
+          .column.is-9
+            .content.is-medium
+              h3.title.is-3 Snippets ¯\_(ツ)_/¯
+              .box
+                h4#const.title.is-3 const
+                article.message.is-primary
+                  span.icon.has-text-primary
+                    i.fab.fa-js
+                  .message-body
+                    | Block-scoped. Cannot be re-assigned. Not immutable.
+                pre.
+              .box
+                h4#let.title.is-3 let
+                article.message.is-primary
+                  span.icon.has-text-primary
+                    i.fas.fa-info-circle
+                  .message-body
+                    | Block-scoped. Can be re-assigned.
+                pre.
+              h3.title.is-3 More to Come...
+              .box
+                h4#lorem.title.is-4 More to come...
+                article.message.is-primary
+                  span.icon.has-text-primary
+                    i.fas.fa-info-circle
+                  .message-body
+                    | Lorem ipsum dolor sit amet, mea ne viderer veritus menandri, id scaevola gloriatur instructior sit.
+                pre.
+    footer.footer
+      section.section
+        .container
+          .columns.is-multiline
+            .column.is-one-third
+              article.notification.media.has-background-white
+                figure.media-left
+                  span.icon
+                    i.has-text-warning.fas.fa-columns.fa-lg
+                .media-content
+                  .content
+                    h1.title.is-size-4 Columns
+                    p.is-size-5.subtitle
+                      | The power of 
+                      strong Flexbox
+                      |  in a simple interface
+            .column.is-one-third
+              article.notification.has-background-white.media
+                figure.media-left
+                  span.icon.has-text-info
+                    i.fab.fa-lg.fa-wpforms
+                .media-content
+                  .content
+                    h1.title.is-size-4 Form
+                    p.is-size-5.subtitle
+                      | The indispensable 
+                      strong form controls
+                      | , designed for maximum clarity
+            .column.is-one-third
+              article.notification.has-background-white.media
+                figure.media-left
+                  span.icon.has-text-danger
+                    i.fas.fa-lg.fa-cubes
+                .media-content
+                  .content
+                    h1.title.is-size-4 Components
+                    p.is-size-5.subtitle
+                      | Advanced multi-part components with lots of possibilities
+            .column.is-one-third
+              article.notification.has-background-white.media
+                figure.media-left
+                  span.icon.has-text-grey
+                    i.fas.fa-lg.fa-cogs
+                .media-content
+                  .content
+                    h1.title.is-size-4 Modifiers
+                    p.is-size-5.subtitle
+                      | An 
+                      strong easy-to-read
+                      |  naming system designed for humans
+            .column.is-one-third
+              article.notification.has-background-white.media
+                figure.media-left
+                  span.icon.has-text-primary
+                    i.fas.fa-lg.fa-warehouse
+                .media-content
+                  .content
+                    h1.title.is-size-4 Layout
+                    p.is-size-5.subtitle
+                      | Design the 
+                      strong structure
+                      |  of your webpage with these CSS classes
+            .column.is-one-third
+              article.notification.has-background-white.media
+                figure.media-left
+                  span.icon.has-text-danger
+                    i.fas.fa-lg.fa-cube
+                .media-content
+                  .content
+                    h1.title.is-size-4 Elements
+                    p.is-size-5.subtitle
+                      | Essential interface elements that only require a 
+                      strong single CSS class
+      hr
+      .columns.is-mobile.is-centered
+        .field.is-grouped.is-grouped-multiline
+          .control
+            .tags.has-addons
+              a.tag.is-link(href='https://github.com/dansup/bulma-templates') Bulma Templates
+              span.tag.is-info MIT license
+          .control
+            .tags.has-addons
+              span.tag.is-dark based on a pen
+              span.tag.has-addons.is-warning
+                a(href='https://codepen.io/melanieseltzer/pen/odOXWM')
+                  i.fab.fa-lg.fa-codepen
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.js')
+    script.
+      window.addEventListener('resize', () => {
+      const divs = document.querySelectorAll(".menu-list");
+      if (window.innerWidth < 768){
+      divs.forEach(div => div.classList.add("tags"));
+      }
+      else {
+      divs.forEach(div => div.classList.remove("tags"));
+      }
+      });

@@ -45,7 +45,11 @@ function reload(done) {
 
 function serve(done) {
   server.init({
-    server: './dist'
+    port: 5500,
+    server: './dist',
+    ui: {
+      port:5800,
+    }
 
   });
   watchFiles()
