@@ -7,11 +7,14 @@ import rename from 'gulp-rename';
 import imagemin from 'gulp-imagemin';
 import cleanCSS from 'gulp-clean-css';
 import pug from 'gulp-pug';
-//import plumber from 'gulp-plumber'
+import plumber from 'gulp-plumber';
+import browserSync from 'browser-sync';
 
 
 import del from 'del';
 
+
+const server = browserSync.create();
 
 // paths
 const paths = {
@@ -28,11 +31,26 @@ const paths = {
     dest: 'dist/assets/img/'
   },
   views: {
-    src: 'source/template/*.pug',
+    src: 'source/template/**/*.pug',
     dest: 'dist'
   }
 };
 
+
+
+function reload(done) {
+  server.reload();
+  done();
+}
+
+function serve(done) {
+  server.init({
+    server: './dist'
+
+  });
+  watchFiles()
+  done();
+}
 /*
  * For small tasks you can export arrow functions
  */
@@ -50,6 +68,8 @@ export function styles() {
       basename: 'main',
       suffix: '.min'
     }))
+    .pipe(server.stream())
+
     .pipe(gulp.dest(paths.styles.dest));
 }
 
@@ -60,19 +80,21 @@ export function scripts() {
     .pipe(babel())
     .pipe(uglify())
     .pipe(concat('main.min.js'))
+    .pipe(server.stream())
+
     .pipe(gulp.dest(paths.scripts.dest));
 }
 
 function views() {
   return gulp.src(paths.views.src)
-    //.pipe(plumber())
+    .pipe(plumber())
     .pipe(pug({
       pretty: true
     }))
+    .pipe(server.stream())
+
     .pipe(gulp.dest(paths.views.dest))
-  /*.pipe(reload({
-    stream: true
-  }));*/
+
 }
 
 
@@ -89,16 +111,16 @@ function images() {
  * You could even use `export as` to rename exported tasks
  */
 function watchFiles() {
-  gulp.watch(paths.scripts.src, scripts);
-  gulp.watch(paths.views.src, views);
-  gulp.watch(paths.styles.src, styles);
-  gulp.watch(paths.images.src, images);
+  gulp.watch(paths.scripts.src, gulp.series(scripts, reload));
+  gulp.watch(paths.views.src, gulp.series(views, reload));
+  gulp.watch(paths.styles.src, gulp.series(styles, reload));
+  gulp.watch(paths.images.src, gulp.series(images, reload));
 }
 export {
   watchFiles as watch
 };
 
-const build = gulp.series(clean, views, gulp.parallel(styles, scripts), images);
+const build = gulp.series(clean, views, gulp.parallel(styles, scripts), images,  serve);
 /*
  * Export a default task
  */
