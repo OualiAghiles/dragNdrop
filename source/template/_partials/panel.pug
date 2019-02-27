@@ -1,3 +1,19 @@
+#modal-fadeInScale-fs.modal.modal-full-screen.modal-fx-fadeInScale
+  .modal-content.modal-card
+    header.modal-card-head
+      p.modal-card-title Modal title
+      button.modal-button-close.delete(aria-label='close')
+    section.modal-card-body
+      | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae cum enim quisquam ducimus, facilis, esse nesciunt porro,
+      | officiis totam veniam libero! Nisi hic vel aspernatur doloremque enim ut blanditiis perferendis, repudiandae
+      | assumenda quibusdam delectus quam eum non maxime ullam quod qui ab in dolorem dolores vero amet! Perferendis
+      | incidunt unde blanditiis harum vel velit, accusantium praesentium autem ut voluptas, voluptatibus fugiat. Molestiae
+      | maiores aspernatur expedita, magnam commodi suscipit explicabo labore temporibus tenetur distinctio mollitia
+      | facere eum ad officia? Sit eaque culpa ea saepe facilis. Consequatur, architecto. Optio eveniet cupiditate accusantium
+      | vero consectetur, maiores eum culpa assumenda reprehenderit sequi aut nihil!
+    footer.modal-card-foot
+      button.modal-button-close.button.is-success Save changes
+      button.modal-button-close.button Cancel
 .row
     h3.title.is-h3 Board
         .is-pulled-right
@@ -8,15 +24,15 @@
                     a.button.is-info
                         i.fas.fa-plus
     hr
-    .columns.is-multiline 
+    .columns.is-multiline
         .column.is-4
-            .card(style="padding:10px")
-                .card-header test
-                .card(style="margin-bottom:10px")
+            .box(style="padding:10px")
+                h4.title.is-4 test
+                .card.modal-button(data-target='modal-fadeInScale-fs', style="margin-bottom:10px")
                     .card-content
                         .media
                             .media-content
-                                p.title.is-4 John Smith
+                                p.title.is-5 John Smith
                                 p.subtitle.is-6 @johnsmith
                 .card
                     .card-content
