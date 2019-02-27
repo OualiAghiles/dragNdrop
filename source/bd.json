@@ -1,0 +1,13 @@
+{
+    "Panels":[
+        {
+            "name":"Go",
+            "list": [
+                {
+                    "value": "samoe text",
+                    "status": false
+                }
+            ]
+        }
+    ]
+}
