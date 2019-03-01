@@ -9,10 +9,8 @@ import cleanCSS from 'gulp-clean-css';
 import pug from 'gulp-pug';
 import plumber from 'gulp-plumber';
 import browserSync from 'browser-sync';
-
-
+import jsdoc from 'gulp-jsdoc3';
 import del from 'del';
-
 
 const server = browserSync.create();
 
@@ -20,23 +18,21 @@ const server = browserSync.create();
 const paths = {
   styles: {
     src: 'source/assets/styles/**/*.sass',
-    dest: 'dist/assets/styles/'
+    dest: 'dist/assets/styles/',
   },
   scripts: {
     src: 'source/assets/scripts/**/*.js',
-    dest: 'dist/assets/scripts/'
+    dest: 'dist/assets/scripts/',
   },
   images: {
     src: 'source/assets/images/**/*.{jpg,jpeg,png}',
-    dest: 'dist/assets/img/'
+    dest: 'dist/assets/img/',
   },
   views: {
     src: 'source/template/**/*.pug',
-    dest: 'dist'
-  }
+    dest: 'dist',
+  },
 };
-
-
 
 function reload(done) {
   server.reload();
@@ -48,11 +44,10 @@ function serve(done) {
     port: 5500,
     server: './dist',
     ui: {
-      port:5800,
-    }
-
+      port: 5800,
+    },
   });
-  watchFiles()
+  watchFiles();
   done();
 }
 /*
@@ -60,26 +55,40 @@ function serve(done) {
  */
 export const clean = () => del(['dist']);
 
+function doc(cb) {
+  const config = require('./jsdoc.json');
+  gulp
+    .src(['README.md', './source/assets/scripts/**/*.js'], {
+      read: false,
+    })
+    .pipe(jsdoc(config, cb));
+}
 /*
  * You can also declare named functions and export them as tasks
  */
 export function styles() {
-  return gulp.src(paths.styles.src)
-    .pipe(sass())
-    .pipe(cleanCSS())
+  return (
+    gulp
+      .src(paths.styles.src)
+      .pipe(sass())
+      .pipe(cleanCSS())
     // pass in options to the stream
-    .pipe(rename({
-      basename: 'main',
-      suffix: '.min'
-    }))
-    .pipe(server.stream())
+      .pipe(
+        rename({
+          basename: 'main',
+          suffix: '.min',
+        }),
+      )
+      .pipe(server.stream())
 
-    .pipe(gulp.dest(paths.styles.dest));
+      .pipe(gulp.dest(paths.styles.dest))
+  );
 }
 
 export function scripts() {
-  return gulp.src(paths.scripts.src, {
-      sourcemaps: true
+  return gulp
+    .src(paths.scripts.src, {
+      sourcemaps: true,
     })
     .pipe(babel())
     .pipe(uglify())
@@ -90,41 +99,52 @@ export function scripts() {
 }
 
 function views() {
-  return gulp.src(paths.views.src)
+  return gulp
+    .src(paths.views.src)
     .pipe(plumber())
-    .pipe(pug({
-      pretty: true
-    }))
+    .pipe(
+      pug({
+        pretty: true,
+      }),
+    )
     .pipe(server.stream())
 
-    .pipe(gulp.dest(paths.views.dest))
-
+    .pipe(gulp.dest(paths.views.dest));
 }
 
-
 function images() {
-  return gulp.src(paths.images.src, {
-      since: gulp.lastRun(images)
+  return gulp
+    .src(paths.images.src, {
+      since: gulp.lastRun(images),
     })
-    .pipe(imagemin({
-      optimizationLevel: 5
-    }))
+    .pipe(
+      imagemin({
+        optimizationLevel: 5,
+      }),
+    )
     .pipe(gulp.dest(paths.images.dest));
 }
 /*
  * You could even use `export as` to rename exported tasks
  */
 function watchFiles() {
-  gulp.watch(paths.scripts.src, gulp.series(scripts, reload));
+  gulp.watch(paths.scripts.src, gulp.series(scripts, reload, doc));
   gulp.watch(paths.views.src, gulp.series(views, reload));
   gulp.watch(paths.styles.src, gulp.series(styles, reload));
   gulp.watch(paths.images.src, gulp.series(images, reload));
 }
 export {
-  watchFiles as watch
+  watchFiles as watch,
 };
 
-const build = gulp.series(clean, views, gulp.parallel(styles, scripts), images,  serve);
+const build = gulp.series(
+  clean,
+  views,
+  gulp.parallel(styles, scripts),
+  images,
+  serve,
+  doc,
+);
 /*
  * Export a default task
  */
