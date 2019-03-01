@@ -1,2 +1,26 @@
 @import ../../../node_modules/bulma/bulma
-@import sass/sheet
+.panel
+  &:not(:last-child)
+    margin-bottom: -1px
+  .panel-heading
+    border-radius: 0
+    cursor: pointer
+    position: relative
+    .js-icon
+      position: absolute
+      right: 20px
+      top: 50%
+      transform: translateY(-50%)
+    &:hover
+      color: hsl(217, 71%, 53%)
+      border-color: hsl(217, 71%, 53%)
+  &.is-active
+    .panel-heading
+      color: hsl(217, 71%, 53%)
+      border-color: hsl(217, 71%, 53%)
+
+
+  .js-accordion-body
+    display: none
+    &.is-active
+      display: block

@@ -19,6 +19,7 @@
     "eslint-config-airbnb-es5": "^1.2.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-import": "^2.16.0",
+    "foodoc": "0.0.9",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
@@ -27,7 +28,9 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.1",
-    "prettier": "^1.16.4"
+    "jsdoc-rtd": "^1.0.15",
+    "prettier": "^1.16.4",
+    "tui-jsdoc-template": "^1.2.2"
   },
   "dependencies": {
     "browser-sync": "^2.26.3",

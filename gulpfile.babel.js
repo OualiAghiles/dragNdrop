@@ -13,7 +13,7 @@ import jsdoc from 'gulp-jsdoc3';
 import del from 'del';
 
 const server = browserSync.create();
-
+const docs = browserSync.create()
 // paths
 const paths = {
   styles: {
@@ -32,13 +32,20 @@ const paths = {
     src: 'source/template/**/*.pug',
     dest: 'dist',
   },
+  jsDoc: {
+    src: 'tutorials/**/*.md',
+    read: 'README.md'
+  }
 };
 
 function reload(done) {
   server.reload();
   done();
 }
-
+function docReload(done) {
+  docs.reload();
+  done();
+}
 function serve(done) {
   server.init({
     port: 5500,
@@ -47,6 +54,9 @@ function serve(done) {
       port: 5800,
     },
   });
+
+  docs.init({ notify: true, port: 9090, ui: { port: 9090 }, server: { baseDir : ['./docs/gen/'], index: 'index.html',
+      directory: false,} });
   watchFiles();
   done();
 }
@@ -59,7 +69,7 @@ function doc(cb) {
   const config = require('./jsdoc.json');
   gulp
     .src(['README.md', './source/assets/scripts/**/*.js'], {
-      read: false,
+      read: true,
     })
     .pipe(jsdoc(config, cb));
 }
@@ -90,8 +100,9 @@ export function scripts() {
     .src(paths.scripts.src, {
       sourcemaps: true,
     })
+    .pipe(gulp.dest(paths.scripts.dest))
     .pipe(babel())
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(concat('main.min.js'))
     .pipe(server.stream())
 
@@ -128,7 +139,8 @@ function images() {
  * You could even use `export as` to rename exported tasks
  */
 function watchFiles() {
-  gulp.watch(paths.scripts.src, gulp.series(scripts, reload, doc));
+  gulp.watch(paths.scripts.src, gulp.series(scripts, doc, reload, docReload));
+  gulp.watch([paths.jsDoc.src, paths.jsDoc.read], gulp.series(docReload, doc));
   gulp.watch(paths.views.src, gulp.series(views, reload));
   gulp.watch(paths.styles.src, gulp.series(styles, reload));
   gulp.watch(paths.images.src, gulp.series(images, reload));

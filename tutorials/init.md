@@ -1,4 +1,4 @@
-# Formation Equipe MRE
+# Formation Equipe MRE2
 
 Cette formation consiste a avoir les prérequis pour ce familiariser avec les language web coté front-end(visuelle)
 

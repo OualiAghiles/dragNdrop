@@ -1,8 +1,27 @@
 extends _layouts/_wrapper
 block content
-  include _partials/_topbar
-  .columns.is-flex
-    .column.is-2
-      include _partials/_sidebar
-    .column.is-10.has-background-white
-      include _partials/container
+  section.section
+    .container
+      h1.is-1.title Accordion
+      .js-accordion
+        .js-accordion-child.panel(data-target = "first")
+          .js-accordion-title.panel-heading
+            span First title
+            span.js-icon
+              i.material-icons add_box
+          .js-accordion-body.panel-block
+            p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam quas commodi soluta corrupti perferendis dicta dolore quasi autem nobis, minima odio inventore aliquid, animi illo magni obcaecati reprehenderit est. Quo?
+        .js-accordion-child.panel(data-target = "seconde")
+          .js-accordion-title.panel-heading
+            span seconde title
+            span.js-icon
+              i.material-icons add_box
+          .js-accordion-body.panel-block
+            p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam quas commodi soluta corrupti perferendis dicta dolore quasi autem nobis, minima odio inventore aliquid, animi illo magni obcaecati reprehenderit est. Quo?
+        .js-accordion-child.panel(data-target = "third")
+          .js-accordion-title.panel-heading
+            span third title
+            span.js-icon
+              i.material-icons add_box
+          .js-accordion-body.panel-block
+            p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam quas commodi soluta corrupti perferendis dicta dolore quasi autem nobis, minima odio inventore aliquid, animi illo magni obcaecati reprehenderit est. Quo?
