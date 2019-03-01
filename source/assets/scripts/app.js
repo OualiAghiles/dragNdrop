@@ -64,11 +64,13 @@ const TabUIController = (function () {
  * @classdesc TabsController singleton.
  * @class
  * @hideconstructor
- * @param {sting} call other class
+ * @param {function}  TabUIController other class
  */
 
 const TabsController = (function (TabContrl) {
   const elems = TabContrl.getElems();
+
+
   /**
    * @function setupEvent
    * @memberof TabsController
@@ -79,6 +81,7 @@ const TabsController = (function (TabContrl) {
    * TabsController.setupEvent();
    * @returns EventListeners
    */
+
   const setupEvent = function () {
     let links;
     links = document.querySelectorAll(elems.tabLink);
@@ -87,6 +90,7 @@ const TabsController = (function (TabContrl) {
     });
   };
   return {
+
     /**
      * @function TabsController.run
      * @memberof TabsController
@@ -97,6 +101,7 @@ const TabsController = (function (TabContrl) {
      * TabsController.run();
      * @returns init setupEventListener
      */
+
     run() {
       return setupEvent();
     },
