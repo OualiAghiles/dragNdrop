@@ -53,8 +53,9 @@ class TodoApp {
   /**
    * display message notification
    * @method
+   * @param icons
    * @param {string} cls - class to add
-   * @param {string} title - Message Title
+   * @param color
    * @param {string} contentMsg - Message bdy
    * @returns {HTMLElement} el - HTML element
    * @fires close() init close btn
@@ -74,17 +75,101 @@ class TodoApp {
    *   </div>
    * </article>
    */
-  showAlert (cls, title, contentMsg) {
+  showAlert (icons,cls, color, contentMsg) {
+    let styleAlert = {
+      templates: [
+        {
+          name: "default",
+            content: {
+               container: 'vce-message-box',
+              inner: 'vce-message-box-inner',
+              icon: 'vce-message-box-icon',
+              message: 'vce-message-box-text',
+              colors:{
+              success: "vce-message-box-style--success",
+                information: "vce-message-box-style--information",
+                warning: "vce-message-box-style--warning",
+                error: "vce-message-box-style--error"
+            }
+          }
+        },
+        {
+          name: "outline",
+          content: {
+            container: 'vce-outline-message-box',
+            inner: 'vce-outline-message-box-inner',
+            icon: 'vce-outline-message-box-icon',
+            message: 'vce-outline-message-box-text',
+            colors:{
+              success: "vce-outline-message-box-style--success",
+              information: "vce-outline-message-box-style--information",
+              warning: "vce-outline-message-box-style--warning",
+              error: "vce-outline-message-box-style--error"
+            }
+          }
+        },
+        {
+          name: 'semiFilled',
+          content: {
+            container: 'vce-semi-filled-message-box',
+            inner: 'vce-semi-filled-message-box-inner',
+            icon: 'vce-semi-filled-message-box-icon',
+            message: 'vce-semi-filled-message-box-text',
+            colors:{
+              success: "vce-semi-filled-message-box-style--success",
+              information: "vce-semi-filled-message-box-style--information",
+              warning: "vce-semi-filled-message-box-style--warning",
+              error: "vce-semi-filled-message-box-style--error"
+            }
+          }
+        },
+        {
+          name: "simple",
+          content: {
+            container: 'vce-simple-message-box',
+            inner: 'vce-simple-message-box-inner',
+            icon: 'vce-simple-message-box-icon',
+            message: 'vce-simple-message-box-text',
+            colors:{
+              success: "vce-simple-message-box-style--success",
+              information: "vce-simple-message-box-style--information",
+              warning: "vce-simple-message-box-style--warning",
+              error: "vce-simple-message-box-style--error"
+            }
+          }
+        }
+      ]
+    }
+    let t = cls
+    let result = styleAlert.templates.filter(el => el.name == t)
+    const style = result[0]
+    /**
+     * style alerts
+     * @function
+     * @memberOf showAlert
+     * @returns {Object[]} Arr - classes
+     */
+    let coloring = function () {
+      //let el = Object.keys(style.content.colors)
+      for (let value of Object.entries(style.content.colors)) {
+        if(value[0] === color) {
+          return value[1]
+        }
+      }
+    }
     let box = document.querySelector('.box') // Todo: change thh class
-    let html = `<article class="message ${cls} js-code is-small">
-                  <div class="message-header">
-                    <p>${title}</p>
-                    <button class="delete is-small" aria-label="delete"></button>
+    let html = `<div class="vcv-container">
+                  <div class="js-code ${style.content.container} ${coloring()} vce ">
+                    <div class="${style.content.inner}">
+                      <span class="${style.content.icon} material-icons">${icons}</span>
+                      <span class="${style.content.message} ">
+                        <p>${contentMsg}
+                        <i class="material-icons delete">close</i>
+                        </p>
+                      </span>
+                    </div>
                   </div>
-                  <div class="message-body">
-                  ${contentMsg}
-                  </div>
-                </article>`
+                </div>`
     // inject html to the DOM
     box.insertAdjacentHTML('beforebegin', html)
     let close = document.querySelector('.delete')
@@ -93,8 +178,11 @@ class TodoApp {
      * */
     close.addEventListener('click', (e) =>{
       e.preventDefault()
-      this.close('.message')
+      this.close('.vcv-container')
     })
+    setTimeout(()=> {
+      this.close('.vcv-container')
+    },1800)
   }
 
   /**
@@ -122,7 +210,6 @@ class TodoApp {
                   ${val}
                   </a>`
     let content = document.querySelector(container)
-   console.log(container)
     content.insertAdjacentHTML('beforeend', html)
   }
 
@@ -137,34 +224,29 @@ class TodoApp {
     let DOM = this.getDomString()
     let addBtnEvent = document.querySelector(DOM.addTodo)
     let enterEvent = document.querySelector(DOM.input)
-
-
-      addBtnEvent.addEventListener('click', (e) => {
-        e.preventDefault()
-
-        if(enterEvent.value !== ""){
-          console.log(enterEvent.value)
-
-          this.addTodo(enterEvent.value, DOM.container)
-        } else {
-          this.showAlert("is-danger","Error", "You can't add an empty todo")
-        }
-
-      })
-      enterEvent.addEventListener('keyup', (e) => {
-        if(e.key === 'Enter' || e.which === 13 || e.keyCode === 13) {
-
-          if(enterEvent.value !== ""){
-            console.log(enterEvent.value)
-
-            this.addTodo(enterEvent.value, DOM.container)
-          } else {
-            this.showAlert("is-danger","Error", "You can't add an empty todo")
-          }
-        }
-      })
-
-
-  }
+    addBtnEvent.addEventListener('click', (e) => {
+      e.preventDefault()
+        this.todoEvent(enterEvent, DOM)
+    })
+    enterEvent.addEventListener('keyup', (e) => {
+      if(e.key === 'Enter' || e.which === 13 || e.keyCode === 13) {
+        this.todoEvent(enterEvent, DOM)
+      }
+    })
 }
+
+  /**
+   *
+   * @param enterEvent
+   * @param dom
+   */
+  todoEvent (enterEvent, dom) {
+    if(enterEvent.value !== ""){
+      this.addTodo(enterEvent.value, dom.container)
+      this.showAlert('check', "simple",'success',"Bravo! Votre Tache a bien etais ajouter")
+    } else {
+      this.showAlert('close', "outline",'error',"Erreur !! Vous ne pouver pas ajouter une tache vide")
+    }
+  }
+  }
 new TodoApp('.js-todo-container')
