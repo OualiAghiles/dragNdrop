@@ -18,6 +18,7 @@
     "name": "Nassidjcom",
     "cleverLinks": false,
     "monospaceLinks": false,
+    "systemColor": "tomato",
     "default": {
       "outputSourceFiles": true
     },
