@@ -82,8 +82,8 @@ class TodoApp {
           name: "default",
             content: {
                container: 'vce-message-box',
-              inner: 'vce-message-box-inner',
-              icon: 'vce-message-box-icon',
+              inner: 'vce-message-x-inner',
+              icon: 'vce-message-boxbo-icon',
               message: 'vce-message-box-text',
               colors:{
               success: "vce-message-box-style--success",
@@ -140,8 +140,7 @@ class TodoApp {
         }
       ]
     }
-    let t = cls
-    let result = styleAlert.templates.filter(el => el.name == t)
+    let result = styleAlert.templates.filter(el => el.name == cls)
     const style = result[0]
     /**
      * style alerts
