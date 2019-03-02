@@ -85,9 +85,12 @@ class TodoApp {
                   ${contentMsg}
                   </div>
                 </article>`
-
+    // inject html to the DOM
     box.insertAdjacentHTML('beforebegin', html)
     let close = document.querySelector('.delete')
+    /**
+     * @event close()
+     * */
     close.addEventListener('click', (e) =>{
       e.preventDefault()
       this.close('.message')
