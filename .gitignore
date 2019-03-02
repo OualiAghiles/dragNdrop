@@ -66,3 +66,7 @@ yarn.lock
 
 # JS-Doc Folder
 docs
+
+package-lock\.json
+
+*.lock
