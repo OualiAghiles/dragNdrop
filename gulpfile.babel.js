@@ -55,7 +55,7 @@ function serve(done) {
     },
   });
 
-  docs.init({ notify: true, port: 9090, ui: { port: 9090 }, server: { baseDir : ['./docs/gen/'], index: 'index.html',
+  docs.init({ notify: true, port: 9090, ui: { port: 9090 }, server: { baseDir : ['./docs/'], index: 'index.html',
       directory: false,} });
   watchFiles();
   done();
@@ -82,7 +82,7 @@ export function styles() {
       .src(paths.styles.src)
       .pipe(sass())
       .pipe(cleanCSS())
-    // pass in options to the stream
+      // pass in options to the stream
       .pipe(
         rename({
           basename: 'main',

@@ -1,11 +1,15 @@
+
 // Trigger modals
 (function () {
   /**
    * @namespace modalFX
    * @classdesc modalFX open modal.
+   * @tutorial init-tutorial
    * @class
    * @hideconstructor
    */
+
+
   const modalFX = (function () {
     /**
      * @namespace
@@ -89,7 +93,7 @@
       unFreeze();
     };
     /**
-     * generic Class to open targetd modal
+     * generic Class to open targetd modalsS
      * @function openModal
      * @memberof modalFX
      * @inner

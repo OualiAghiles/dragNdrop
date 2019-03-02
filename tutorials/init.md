@@ -1,11 +1,12 @@
 # Formation Equipe MRE2
 
-Cette formation consiste a avoir les prérequis pour ce familiariser avec les language web coté front-end(visuelle)
+Cette formation consiste a avoir les prérequis pour ce familiariser avec
+les language web coté front-end(visuelle)
 
 >Cette formation comprendra les langage suivants:
->- HTML (Hypertext Markup Language) [Page Wikipédia](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language)
->- CSS (Cascading Style Sheets) [Page Wikipédia](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)
->- JavaScript  [Page Wikipédia](https://fr.wikipedia.org/wiki/JavaScript)
+>- **HTML** (Hypertext Markup Language) [Page Wikipédia](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language)
+>- **CSS** (Cascading Style Sheets) [Page Wikipédia](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade)
+>- **JavaScript**  [Page Wikipédia](https://fr.wikipedia.org/wiki/JavaScript)
 
 ## Bref historique du web
 
