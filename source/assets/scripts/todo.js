@@ -75,7 +75,10 @@ class TodoApp {
    *   </div>
    * </article>
    */
-  showAlert (icons,cls, color, contentMsg) {
+  showAlert (icons,cls, color, contentMsg, animation) {
+    if(!animation){
+      animation = "fadeIn"
+    }
     let styleAlert = {
       templates: [
         {
@@ -156,8 +159,8 @@ class TodoApp {
         }
       }
     }
-    let box = document.querySelector('.box') // Todo: change thh class
-    let html = `<div class="vcv-container">
+    let box = document.querySelector('body') // Todo: change thh class
+    let html = `<div class="vcv-container animated ${animation}" style="position:absolute; right:10px; top:10px; z-index:2000">
                   <div class="js-code ${style.content.container} ${coloring()} vce ">
                     <div class="${style.content.inner}">
                       <span class="${style.content.icon} material-icons">${icons}</span>
@@ -221,15 +224,23 @@ class TodoApp {
    */
   setupEvents () {
     let DOM = this.getDomString()
-    let addBtnEvent = document.querySelector(DOM.addTodo)
-    let enterEvent = document.querySelector(DOM.input)
+    let cont = document.querySelector(DOM.container)
+    let addBtnEvent = cont.querySelector(DOM.addTodo)
+    let enterEvent = cont.querySelector(DOM.input)
     addBtnEvent.addEventListener('click', (e) => {
       e.preventDefault()
         this.todoEvent(enterEvent, DOM)
     })
     enterEvent.addEventListener('keyup', (e) => {
+      if(enterEvent.classList.contains('is-danger')){
+        enterEvent.classList.remove('is-danger')
+        enterEvent.classList.add('is-success')
+      } else{
+        enterEvent.classList.add('is-success')
+      }
       if(e.key === 'Enter' || e.which === 13 || e.keyCode === 13) {
         this.todoEvent(enterEvent, DOM)
+        enterEvent.classList.remove('is-success')
       }
     })
 }
@@ -241,11 +252,18 @@ class TodoApp {
    */
   todoEvent (enterEvent, dom) {
     if(enterEvent.value !== ""){
+
       this.addTodo(enterEvent.value, dom.container)
       this.showAlert('check', "simple",'success',"Bravo! Votre Tache a bien etais ajouter")
     } else {
-      this.showAlert('close', "outline",'error',"Erreur !! Vous ne pouver pas ajouter une tache vide")
+      this.showAlert('close', "semiFilled",'error',"Erreur !! Vous ne pouver pas ajouter une tache vide")
+      if(enterEvent.classList.contains('is-success')) {
+        enterEvent.classList.remove('is-success')
+      }
+      enterEvent.classList.add('is-danger')
     }
+    enterEvent.value = ""
   }
   }
 new TodoApp('.js-todo-container')
+new TodoApp('.js-todo-container2')

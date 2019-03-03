@@ -18,7 +18,7 @@
     "name": "Nassidjcom",
     "cleverLinks": false,
     "monospaceLinks": false,
-    "systemColor": "tomato",
+    "systemColor": "#BB2031",
     "default": {
       "outputSourceFiles": true
     },

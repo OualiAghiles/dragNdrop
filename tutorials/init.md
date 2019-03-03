@@ -1,4 +1,4 @@
-# Formation Equipe MRE2
+# Initiation au langage web
 
 Cette formation consiste a avoir les prérequis pour ce familiariser avec
 les language web coté front-end(visuelle)
@@ -28,7 +28,6 @@ Dans cette partie nous allons nous familliariser avec le langage HTML et les out
 Voici les point que nous allons aborder ensemble pour cette partie
 
 
->- Historique
 >- Apreander le langage
 >- Ou est il utiliser
 >- HTML est ce un langage de programmation?
@@ -36,44 +35,9 @@ Voici les point que nous allons aborder ensemble pour cette partie
 >- Quelque Exemples
 >- Premier Projet(structure de base du premier projet)
 >- Quelque réferance et documentations
+>- [Partie Html](tutorial-html.html) - lien vers la partie du cour html
 ---
-### Les outils conseiller
->  ##### Navigateurs
->
->    Firefox
->    google Chrome
->
->  ##### Editeur de texte
->
->    vscode
->    Atom
->    sublime text
 
----
-## Exemple de la structure de base d'une page HTML
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- contenu non visible sur la page -->
-    <!-- Encodage de la page -->
-    <meta charset ="utf-8">
-    <!-- titre de la page -->
-    <title>Titre de la page</title>
-    <!-- lien vers la feuille de style -->
-    <link rel="stylesheet" href="main.css" >
-  </head>
-  <!-- contenu visible sur la page -->
-  <body>
-    <!-- contenu de  la page -->
-
-    <!--  lien vers le fichier JavaScript ce met a la fin de la page pour eviter de bloquer de chargement de cette derniere et amoindrir les erreurs  -->
-    <script src="main.js" charset="utf-8"></script>
-  </body>
-</html>
-```
-
----
 #### Description du premier Projet
 
 
