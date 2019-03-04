@@ -4,7 +4,8 @@
   /**
    * @namespace modalFX
    * @classdesc modalFX open modal.
-   * @tutorial init-tutorial
+   * @tutorial modal~tutorial
+   * @see {@link modal~tutorial}
    * @class
    * @hideconstructor
    */

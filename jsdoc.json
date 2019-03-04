@@ -24,7 +24,7 @@
     },
     "path": "ink-docstrap",
     "navType": "vertical",
-    "linenums": false,
+    "linenum": true,
     "dateFormat": "MMMM Do YYYY, h:mm:ss a",
     "footerText": "NSC Lib"
 

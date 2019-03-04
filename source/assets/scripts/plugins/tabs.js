@@ -40,7 +40,7 @@ class Tabs {
    * @param {href} target
    */
   changeContent (target, animation) {
-    let tabContent =  this.content.querySelector('.tab_content.is-active')
+    let tabContent =  this.content.querySelector('.tab-content.is-active')
     let newContent = document.getElementById(target)
 
     if(animation){
@@ -67,8 +67,10 @@ class Tabs {
    * @param {tring} newTab
    */
   animation (activeTab, newTab) {
-    activeTab.classList.remove('is-active', 'fade')
-    newTab.classList.add('is-active', 'fade')
+    activeTab.classList.remove('is-active')
+    activeTab.classList.remove('fade')
+    newTab.classList.add('is-active')
+    newTab.classList.add('fade')
     newTab.offsetWidth
     newTab.classList.add('in')
     // remove events
@@ -94,4 +96,4 @@ class Tabs {
     }
   }
 }
-let tab = new Tabs('.tabs_block')
+let tab = new Tabs('.tabs-box')
