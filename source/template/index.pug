@@ -1,6 +1,18 @@
 extends _layouts/_wrapper
 block content
-  include _partials/todolist
+  .container
+    include _partials/todolist
   .container
     include _partials/accordion
+  .container
     include _partials/_tabs
+  .container
+    include _partials/carouse
+block script
+  script.
+    new slider(document.querySelector('#slider2'), {
+      slidesToScroll: 1,
+      slidesVisible: 3,
+      loop: true
+    })
+

@@ -23,3 +23,15 @@ block content
   include exemple/section/pt-fort
   include exemple/section/newsletter
   include exemple/footer
+block script
+  script.
+    new slider(document.querySelector('#slider'), {
+      slidesToScroll: 1,
+      slidesVisible: 3,
+      loop: true
+    })
+    new slider(document.querySelector('#slider3'), {
+      slidesToScroll: 1,
+      slidesVisible: 2,
+      loop: true
+    })

@@ -32,6 +32,7 @@
  * JavaScript
  * let myAccordion = new Accordion('.js-accordion')
  * </script>
+ *
  */
 class Accordion {
   /** @lends Accordion */

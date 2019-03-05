@@ -25,7 +25,7 @@ const paths = {
     dest: 'dist/assets/scripts/',
   },
   images: {
-    src: 'source/assets/images/**/*.{jpg,jpeg,png}',
+    src: 'source/assets/images/**/*.{jpg,jpeg,png,svg}',
     dest: 'dist/assets/img/',
   },
   views: {

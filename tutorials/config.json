@@ -1,0 +1,16 @@
+{
+  "init": {
+    "title": "Formation",
+    "children": {
+      "html": {
+        "title": "HTML"
+      },
+      "css": {
+        "title": "CSS"
+      },
+      "js": {
+        "title": "JavaScript"
+      }
+    }
+  }
+}
